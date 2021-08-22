@@ -24,7 +24,7 @@ use App\Http\Controllers\DashboardController;
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 
-//Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('chart', [DashboardController::class, 'chart']);
@@ -39,4 +39,4 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::apiResource('products', ProductController::class);
     Route::apiResource('orders', OrderController::class)->only('index', 'show');
     Route::apiResource('permissions', PermissionController::class)->only('index');
-//});
+});
